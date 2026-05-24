@@ -1,208 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJU Enterprise Development Center</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; background: #f5f5f5; color: #333; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Football_pictogram.svg/330px-Football_pictogram.svg.png">
+<title>Club Cards</title>
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: #111;
+    font-family: sans-serif;
+  }
 
-    .header {
-      background: #003399;
-      color: white;
-      text-align: center;
-      padding: 2.5rem 1rem;
-    }
-    .header .badge {
-      display: inline-block;
-      background: #FFD700;
-      color: #003399;
-      font-weight: bold;
-      font-size: 0.8rem;
-      padding: 0.3rem 1rem;
-      margin-bottom: 1rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-    .header h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
-    .header h1 span { color: #FFD700; }
-    .header p { color: #ccd9ff; font-size: 1rem; max-width: 500px; margin: 0 auto; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 220px);
+    gap: 1.5rem;
+  }
 
-    .divider { height: 6px; background: #FFD700; }
+  .card {
+    width: 220px;
+    background: #1c1c1c;
+    border-radius: 16px;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid #2a2a2a;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  }
 
-    .about {
-      background: white;
-      text-align: center;
-      padding: 2rem 1.5rem;
-      max-width: 700px;
-      margin: 2rem auto;
-      border-left: 5px solid #003399;
-      border-right: 5px solid #FFD700;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    .about h2 { color: #003399; margin-bottom: 0.5rem; }
-    .about p  { color: #555; font-size: 0.95rem; line-height: 1.6; }
+  .card:hover {
+    transform: translateY(-8px);
+    
+  
+  }
 
-    .section-title { text-align: center; margin: 2rem 0 1.2rem; }
-    .section-title h2 { color: #003399; font-size: 1.5rem; }
-    .section-title p  { color: #777; font-size: 0.9rem; }
+  .badge {
+    background: #141414;
+    padding: 2rem;
+  }
 
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-      padding: 0 2rem 3rem;
-    }
+  .badge img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    transition: transform 0.3s;
+  }
 
-    .card {
-      background: white;
-      width: 280px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      overflow: hidden;
-      border-bottom: 4px solid #FFD700;
-    }
-    .card img { width: 100%; height: 180px; object-fit: cover; display: block; }
-    .card-body { padding: 1.2rem; }
-    .card-body h3 { color: #003399; margin-bottom: 0.4rem; font-size: 1.05rem; }
-    .card-body p  { color: #666; font-size: 0.85rem; line-height: 1.5; }
-    .card-tag {
-      display: inline-block;
-      background: #003399;
-      color: white;
-      font-size: 0.72rem;
-      padding: 0.2rem 0.7rem;
-      margin-bottom: 0.6rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+  .card:hover .badge img {
+    transform: scale(1.1);
+  }
 
-    .contact {
-      background: #003399;
-      color: white;
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-    .contact h3 { font-size: 1.2rem; margin-bottom: 0.4rem; }
-    .contact p  { color: #ccd9ff; font-size: 0.9rem; }
-    .contact a  {
-      display: inline-block;
-      margin-top: 1rem;
-      background: #FFD700;
-      color: #003399;
-      font-weight: bold;
-      padding: 0.6rem 2rem;
-      text-decoration: none;
-      font-size: 0.9rem;
-    }
+  .info {
+    padding: 1rem;
+    border-top: 1px solid #2a2a2a;
+  }
 
-    footer {
-      background: #001a66;
-      color: #aaa;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.78rem;
-    }
-    footer span { color: #FFD700; }
-  </style>
+  .info h2 {
+    color: #fff;
+    margin: 0 0 0.3rem;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .info p {
+    color: #888;
+    font-size: 0.72rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .info .league {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 0.65rem;
+    color: #aaa;
+    background: #2a2a2a;
+    padding: 0.2rem 0.7rem;
+    border-radius: 99px;
+  }
+
+  @media (max-width: 960px) {
+    .grid { grid-template-columns: repeat(2, 220px); }
+  }
+</style>
 </head>
 <body>
+<div class="grid">
 
-  <div class="header">
-    <div class="badge">Arthur Jarvis University</div>
-    <h1>AJU <span>Enterprise Development</span> Center</h1>
-    <p>Empowering students and communities through practical skills and enterprise training.</p>
+  <div class="card">
+    <div class="badge"><img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" alt="Real Madrid"></div>
+    <div class="info"><h2>Real Madrid</h2><p>Los Blancos</p><span class="league">La Liga</span></div>
   </div>
 
-  <div class="divider"></div>
-
-  <div class="about">
-    <h2>Who We Are</h2>
-    <p>The AJU Enterprise Development Center (EDC) equips students with real-world vocational and entrepreneurial skills. We bridge the gap between education and enterprise through hands-on training programs.</p>
+  <div class="card">
+    <div class="badge"><img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg" alt="Barcelona"></div>
+    <div class="info"><h2>FC Barcelona</h2><p>Blaugrana</p><span class="league">La Liga</span></div>
   </div>
 
-  <div class="section-title">
-    <h2>What We Do</h2>
-    <p>Our core training programs and enterprise activities</p>
+  <div class="card">
+    <div class="badge"><img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg" alt="Man City"></div>
+    <div class="info"><h2>Man City</h2><p>The Citizens</p><span class="league">Premier League</span></div>
   </div>
 
-  <div class="cards">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=600&auto=format&fit=crop" alt="Poultry Farming">
-      <div class="card-body">
-        <span class="card-tag">Agriculture</span>
-        <h3>🐔 Poultry Farming</h3>
-        <p>We train students in modern poultry management — from brooding and feeding to record-keeping and marketing of poultry products.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&auto=format&fit=crop" alt="Crop Farming">
-      <div class="card-body">
-        <span class="card-tag">Agriculture</span>
-        <h3>🌾 Crop Farming</h3>
-        <p>Students engage in practical crop production including planting, irrigation, and harvesting to build sustainable agricultural enterprises.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&auto=format&fit=crop" alt="Sewing and Fashion">
-      <div class="card-body">
-        <span class="card-tag">Vocational</span>
-        <h3>🧵 Sewing & Fashion</h3>
-        <p>Our tailoring and fashion design program teaches cutting, stitching, and garment production — preparing students for the textile industry.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&auto=format&fit=crop" alt="Fish Farming">
-      <div class="card-body">
-        <span class="card-tag">Agriculture</span>
-        <h3>🐟 Fish Farming</h3>
-        <p>Students learn aquaculture techniques including pond management, fish feeding, and processing to run profitable fish farming businesses.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop" alt="Bakery">
-      <div class="card-body">
-        <span class="card-tag">Vocational</span>
-        <h3>🍞 Bakery & Food Production</h3>
-        <p>We offer training in bread, pastry, and confectionery production equipping students with skills to start food businesses.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&auto=format&fit=crop" alt="ICT Training">
-      <div class="card-body">
-        <span class="card-tag">Technology</span>
-        <h3>💻 ICT & Digital Skills</h3>
-        <p>Basic computer literacy, graphic design, and digital entrepreneurship training for students entering today's digital economy.</p>
-      </div>
-    </div>
-
+  <div class="card">
+    <div class="badge"><img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg" alt="Liverpool"></div>
+    <div class="info"><h2>Liverpool</h2><p>The Reds</p><span class="league">Premier League</span></div>
   </div>
 
-  <div class="contact">
-    <h3>Interested in Our Programs?</h3>
-    <p>Reach out to the EDC office on campus for registration and inquiries.</p>
-    <a href="mailto:edc@aju.edu.ng">Contact EDC Office</a>
+  <div class="card">
+    <div class="badge"><img src="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg" alt="Arsenal"></div>
+    <div class="info"><h2>Arsenal</h2><p>The Gunners</p><span class="league">Premier League</span></div>
   </div>
 
-  <div style="text-align:center; padding: 2rem; background: #f5f5f5;">
-    <p style="color:#555; font-size:0.9rem; margin-bottom:0.8rem;">Curious about how this page was made?</p>
-    <a href="/AJU_EDC_Explanation.pdf" download
-      style="display:inline-block; background:#003399; color:#FFD700; font-weight:bold;
-             padding:0.7rem 2rem; text-decoration:none; font-size:0.95rem; border:2px solid #FFD700;">
-      📄 How I Built This
-    </a>
+  <div class="card">
+    <div class="badge"><img src="https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg" alt="Chelsea"></div>
+    <div class="info"><h2>Chelsea</h2><p>The Blues</p><span class="league">Premier League</span></div>
   </div>
 
-  <footer>
-    &copy; 2026 <span>Arthur Jarvis University</span> &mdash; Enterprise Development Center. All rights reserved.
-  </footer>
+  <div class="card">
+    <div class="badge"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/FC_Bayern_M%C3%BCnchen_logo_%282024%29.svg/500px-FC_Bayern_M%C3%BCnchen_logo_%282024%29.svg.png" alt="Bayern Munich"></div>
+    <div class="info"><h2>Bayern Munich</h2><p>Die Roten</p><span class="league">Bundesliga</span></div>
+  </div>
 
+  <div class="card">
+    <div class="badge"><img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg" alt="PSG"></div>
+    <div class="info"><h2>PSG</h2><p>Les Parisiens</p><span class="league">Ligue 1</span></div>
+  </div>
+
+  <div class="card">
+    <div class="badge"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Juventus_FC_-_logo_black_%28Italy%2C_2020%29.svg/330px-Juventus_FC_-_logo_black_%28Italy%2C_2020%29.svg.png" alt="Juventus"></div>
+    <div class="info"><h2>Juventus</h2><p>La Vecchia Signora</p><span class="league">Serie A</span></div>
+  </div>
+
+  <div class="card">
+    <div class="badge"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Logo_of_AC_Milan.svg/330px-Logo_of_AC_Milan.svg.png" alt="AC Milan"></div>
+    <div class="info"><h2>AC Milan</h2><p>I Rossoneri</p><span class="league">Serie A</span></div>
+  </div>
+
+  <div class="card">
+    <div class="badge"><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/FC_Internazionale_Milano_2021.svg" alt="Inter Milan"></div>
+    <div class="info"><h2>Inter Milan</h2><p>I Nerazzurri</p><span class="league">Serie A</span></div>
+  </div>
+
+  <div class="card">
+    <div class="badge"><img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Borussia_Dortmund_logo.svg" alt="Dortmund"></div>
+    <div class="info"><h2>Dortmund</h2><p>Die Borussen</p><span class="league">Bundesliga</span></div>
+  </div>
+
+</div>
 </body>
 </html>
